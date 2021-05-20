@@ -1,0 +1,56 @@
+﻿@page
+@model AODMS.Pages.DailyLog.IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="container row vertical-align">
+
+    <!--Create new logs. JG-->
+    <div class="col-sm-8">
+        <h2 class="daily-log-title">Logs</h2>
+    </div>
+    <div class="col-sm-4 daily-log-button">
+        <a asp-page="./Create" class="btn btn-info form-control text-white">Create New Daily Log</a>
+    </div>
+    <!--Read existing logs. JG-->
+    <div class="col-sm-8 daily-log-grid">
+        <form method="post">
+            @if (Model.DailyLogs.Count() > 0)
+            {
+                <table class="table">
+                    <tr>
+                        <!--Get table headers. JG-->
+                        <th>
+                            <label asp-for="DailyLogs.FirstOrDefault().Date"></label>
+                        </th>
+                        <th>
+                            <label asp-for="DailyLogs.FirstOrDefault().Location"></label>
+                        </th>
+                    </tr>
+                    <!--List each daily log record. JG-->
+                    @foreach (var item in Model.DailyLogs)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(m => item.Date)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => item.Location)
+                            </td>
+                            <td>
+                                <a asp-page="./ShiftEntries/Index" class="btn btn-success">Open</a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            }
+            else
+            {
+                <!--No daily log records in database. JG -->
+                <p>No logs available.</p>
+            }
+        </form>
+    </div>
+</div>
+

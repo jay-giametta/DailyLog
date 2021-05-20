@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - AODMS</title>
+
+    <!--Add CSS references. JG-->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <!--Custom top navigation bar. JG-->
+    <nav class="navbar navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a asp-page="/Index" class="navbar-brand">AODMS</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a asp-page="/DailyLog/Index">Daily Log</a></li>
+            </ul>
+        </div>
+    </nav>
+    <hr />
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    <!--Add JS references. JG-->
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+</body>
+</html>
