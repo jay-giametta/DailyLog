@@ -10,15 +10,6 @@ body {
     padding-right: 15px;
 }
 
-/* Navigation bar entries. JG */
-.navbar-brand {
-    color: black;
-}
-
-.nav.navbar-nav a {
-    color: black;
-}
-
 /* DailyLog index entries. JG */
 .daily-log-button {
     padding-top: 25px;
@@ -28,8 +19,3 @@ body {
 .daily-log-grid {
     padding-top: 10px;
 }
-
-.daily-log-title {
-    color: black;
-}
-

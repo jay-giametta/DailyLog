@@ -26,6 +26,12 @@
         @RenderBody()
     </div>
 
+    <!--Run page specific scripts. JG-->
+    @if (IsSectionDefined("scripts"))
+    {
+        RenderSection("scripts");
+    }
+
     <!--Add JS references. JG-->
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>

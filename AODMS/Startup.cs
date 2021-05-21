@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AODMS.Models;
+using AODMS.Models.DailyLog;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -36,7 +36,7 @@ namespace AODMS
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             // Added AODMS database context. JG
-            services.AddDbContext<ApplicationDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("AODMS")));
+            services.AddDbContext<DailyLogDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("AODMS")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AODMS.Models
+namespace AODMS.Models.DailyLog
 {
-    public class DailyLog
+    public class DailyLogSummary
     {
         /* Autogenerate Ids. JG */
         [Key]
