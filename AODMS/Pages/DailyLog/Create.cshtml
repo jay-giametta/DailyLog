@@ -42,7 +42,7 @@
 
             <div class="col-sm-4">
                 <!--Only take dates in YYYY-MM-DD format. JG-->
-                <input class="form-control" asp-for="DailyLogSummary.Date" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required="required" value="@DateTime.Now.ToString("yyyy-MM-dd")"/>
+                <input class="form-control" type=date asp-for="DailyLogSummary.Date" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required="required" value="@DateTime.Now.ToString("yyyy-MM-dd")"/>
                 <!--Create a field description. JG-->
                 <small class="form-text text-muted">Enter date in YYYY-MM-DD format.</small>
             </div>
