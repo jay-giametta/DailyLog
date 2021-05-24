@@ -17,6 +17,7 @@ namespace AODMS.Pages.DailyLog.Entries
         [BindProperty]
         public DailyLogEntry DailyLogEntry { get; set; }
 
+        [BindProperty]
         /* Store the id parameter to link log entries to the correct log. JG */
         public int LogId { get; set; }
 
@@ -37,17 +38,11 @@ namespace AODMS.Pages.DailyLog.Entries
             /* Fill in hidden values for the log entry. JG */
             DailyLogEntry.CreateTime = DateTime.Now;
 
-            /* Don't create records for invalid model states. JG */
-            if (ModelState.IsValid)
-            {
-                await _db.DailyLogEntries.AddAsync(DailyLogEntry);                                      //Prep the log entry to save to the database
-                await _db.SaveChangesAsync();                                                           //Save prepped changes
-                return Redirect(string.Format(".?id={0}", DailyLogEntry.LogSummaryId));                 //Send the user back to the correct log entry page
-            }
-            else
-            {
-                return Page();                                                                          //Return to the add page if model is invalid.
-            }
+            await _db.DailyLogEntries.AddAsync(DailyLogEntry);                                      //Prep the log entry to save to the database
+
+            await _db.SaveChangesAsync();                                                           //Save prepped changes
+        
+            return Redirect(string.Format(".?id={0}", DailyLogEntry.LogSummaryId));                 //Send the user back to the correct log entry page
         }
     }
 }

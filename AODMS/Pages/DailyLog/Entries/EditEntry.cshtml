@@ -10,8 +10,6 @@
 <div class="table-bordered container extra-pad">
 
     <form method="post">
-        <!--Give a summary of invalid model states. JG-->
-        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
 
         <!--Insert hidden field information-->
         <input type="hidden" asp-for="DailyLogEntry.Id" />
@@ -25,11 +23,8 @@
             </div>
 
             <div class="col-sm-9">
-                <input class="form-control" asp-for="DailyLogEntry.Entry" />
+                <input class="form-control" asp-for="DailyLogEntry.Entry" required="required" />
             </div>
-
-            <!--Alert on invalid field state. JG-->
-            <span class="text-danger" asp-validation-for="DailyLogEntry.Entry"></span>
 
         </div>
 
@@ -49,10 +44,4 @@
     </form>
 
 </div>
-
-@section Scripts{
-    <!--Perform client-side validation prior to post. JG-->
-    <partial name="_ValidationScriptsPartial" />
-}
-
 

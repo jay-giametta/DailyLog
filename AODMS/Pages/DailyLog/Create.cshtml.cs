@@ -36,29 +36,21 @@ namespace AODMS.Pages
          /* Do this when the form is submitted. JG */
         public async Task<IActionResult> OnPost()
         {
-            /* Don't create records for invalid model states. JG */
-            if (!ModelState.IsValid)
+            /* Check if theres already an existing record with matching date/location. JG */
+            int id;
+            try
             {
-                DailyLogLocations = await _db.DailyLogLocations.ToListAsync();  //Load the records from the Location table in the database
-                return Page();                                                  //Send the user back to this page on non-valid state
+                id = _db.DailyLogSummaries.Where(record => record.Location == DailyLogSummary.Location && record.Date == DailyLogSummary.Date).FirstOrDefault().Id;
             }
-            else
+            catch (NullReferenceException)
             {
-                /* Check if theres already an existing record with matching date/location. JG */
-                int id;
-                try
-                {
-                    id = _db.DailyLogSummaries.Where(record => record.Location == DailyLogSummary.Location && record.Date == DailyLogSummary.Date).FirstOrDefault().Id;
-                }
-                catch (NullReferenceException)
-                {
-                    await _db.DailyLogSummaries.AddAsync(DailyLogSummary);      //Prep the created DailyLog to save to the database
-                    await _db.SaveChangesAsync();                               //Save prepped changes
-                    id = DailyLogSummary.Id;
-                }
+                await _db.DailyLogSummaries.AddAsync(DailyLogSummary);      //Prep the created DailyLog to save to the database
+                await _db.SaveChangesAsync();                               //Save prepped changes
+                id = DailyLogSummary.Id;
+            }
 
-                return Redirect(string.Format("./Entries?id={0}",id));     //Send the user to the correct shift entriesd DailyLog
-            }
+            return Redirect(string.Format("./Entries?id={0}", id));     //Send the user to the correct shift entriesd DailyLog
+
         }
     }
 }
