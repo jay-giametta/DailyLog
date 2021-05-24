@@ -37,7 +37,7 @@
 
 </div>
 <!--Create a separate framed section for log entries. JG-->
-<div class="table-bordered container">
+<div class="table-bordered container extra-pad">
 
     @if (Model.DailyLogEntries.Count() > 0)
     {
@@ -48,19 +48,19 @@
             {
                 <div class="row">
 
-                    <div class="col-sm-2">
-                        @item.CreateTime
+                    <div class="col-sm-1">
+                        @(item.CreateTime.ToString("HHmm") + "L")
                     </div>
 
                     <div class="col-sm-2">
                         @item.CreateUser
                     </div>
 
-                    <div class="col-sm-7">
+                    <div class="col-sm-6">
                         @item.Entry
                     </div>
 
-                    <div class="col-sm-1">
+                    <div class="col-sm-2">
                         <input type="submit" value="Edit" class="btn btn-primary form-control" />
                     </div>
 

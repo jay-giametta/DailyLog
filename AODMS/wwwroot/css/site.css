@@ -1,18 +1,8 @@
-
-/* General entries. JG */
 body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-}
-
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-/* DailyLog entries. JG */
-
-.daily-log-entry {
     padding: 30px;
-    color: red;
+}
+
+/*DailyLog CSS. JG*/
+.extra-pad {
+    padding: 30px;
 }

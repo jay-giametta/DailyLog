@@ -7,7 +7,7 @@
 <h4 class="text-info">Add Log Entry</h4>
 <br />
 
-<div class="table-bordered container" style="padding:30px;">
+<div class="table-bordered container extra-pad">
 
     <form method="post">
         <!--Give a summary of invalid model states. JG-->
@@ -53,7 +53,7 @@
             </div>
 
             <div class="col-sm-2">
-                <a asp-page="/DailyLog/Index" class="btn btn-info form-control">Back to Log Entries</a>
+                <a asp-page="./Index" asp-route-id="@Model.LogId" class="btn btn-info form-control">Back to Log Entries</a>
             </div>
 
         </div>
