@@ -14,14 +14,14 @@ namespace AODMS.Pages.DailyLog
         /* Create a context to allow CRUD database operations from the page. JG */
         private readonly DailyLogDbContext _db;
 
-        /* Instantiate the local database context. JG */
+        /* Store DailyLog records from the database and allow iterations over them. JG */
+        public IEnumerable<DailyLogSummary> DailyLogSummaries { get; set; }
+
+        /* Instantiate the page model. JG */
         public IndexModel(DailyLogDbContext db)
         {
             _db = db;
         }
-
-        /* Store DailyLog records from the database and allow iterations over them. JG */
-        public IEnumerable<DailyLogSummary> DailyLogSummaries { get; set; }
 
         public async Task OnGet()
         {

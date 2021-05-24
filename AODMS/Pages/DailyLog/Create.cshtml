@@ -22,7 +22,7 @@
             </div>
 
             <div class="col-sm-4">
-                <select asp-for="DailyLogSummary.Location" class="form-control">
+                <select class="form-control" asp-for="DailyLogSummary.Location">
                     @foreach (var item in Model.DailyLogLocations)
                     {
                         <option>
@@ -35,7 +35,7 @@
             </div>
 
             <!--Alert on invalid field state. JG-->
-            <span asp-validation-for="DailyLogSummary.Location" class="text-danger"></span>
+            <span class="text-danger" asp-validation-for="DailyLogSummary.Location"></span>
 
         </div>
         <!--Get the date of the log file. JG-->
@@ -47,24 +47,24 @@
 
             <div class="col-sm-4">
                 <!--Only take dates in YYYY-MM-DD format. JG-->
-                <input asp-for="DailyLogSummary.Date" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                <input class="form-control" asp-for="DailyLogSummary.Date" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
                 <!--Create a field description. JG-->
                 <small class="form-text text-muted">Enter date in YYYY-MM-DD format.</small>
             </div>
 
             <!--Alert on invalid field state. JG-->
-            <span asp-validation-for="DailyLogSummary.Date" class="text-danger"></span>
+            <span class="text-danger" asp-validation-for="DailyLogSummary.Date"></span>
         </div>
         <!--Create the log file or go back to the last page. JG-->
         <div class="form-group row">
 
             <div class="col-sm-2 col-sm-offset-2">
 
-                <input type="submit" value="Create" class="btn btn-primary form-control" />
+                <input class="btn btn-primary form-control" type="submit" value="Create" />
             </div>
 
             <div class="col-sm-2">
-                <a asp-page="./Index" class="btn btn-info form-control">Back to List</a>
+                <a class="btn btn-info form-control" asp-page="./Index">Back to List</a>
             </div>
 
         </div>

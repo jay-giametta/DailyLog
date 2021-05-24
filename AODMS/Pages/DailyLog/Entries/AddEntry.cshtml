@@ -24,10 +24,10 @@
             </div>
 
             <div class="col-sm-2">
-                <input asp-for="DailyLogEntry.CreateUser" class="form-control" />
+                <input class="form-control" asp-for="DailyLogEntry.CreateUser" />
             </div>
             <!--Alert on invalid field state. JG-->
-            <span asp-validation-for="DailyLogEntry.CreateUser" class="text-danger"></span>
+            <span class="text-danger" asp-validation-for="DailyLogEntry.CreateUser"></span>
         </div>
 
         <div class="form-group row">
@@ -37,11 +37,11 @@
             </div>
 
             <div class="col-sm-9">
-                <input asp-for="DailyLogEntry.Entry" class="form-control" />
+                <input class="form-control" asp-for="DailyLogEntry.Entry" />
             </div>
 
             <!--Alert on invalid field state. JG-->
-            <span asp-validation-for="DailyLogEntry.Entry" class="text-danger"></span>
+            <span class="text-danger" asp-validation-for="DailyLogEntry.Entry"></span>
 
         </div>
 
@@ -49,11 +49,11 @@
         <div class="form-group row">
 
             <div class="col-sm-2 col-sm-offset-2">
-                <input type="submit" value="Add" class="btn btn-primary form-control" />
+                <input class="btn btn-primary form-control" type="submit" value="Add" />
             </div>
 
             <div class="col-sm-2">
-                <a asp-page="./Index" asp-route-id="@Model.LogId" class="btn btn-info form-control">Back to Log Entries</a>
+                <a class="btn btn-info form-control" asp-page="./Index" asp-route-id="@Model.LogId">Back to Log Entries</a>
             </div>
 
         </div>

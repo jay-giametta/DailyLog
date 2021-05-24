@@ -48,7 +48,6 @@ namespace AODMS
             }
             else
             {
-                app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
 

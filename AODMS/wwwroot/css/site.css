@@ -6,3 +6,7 @@ body {
 .extra-pad {
     padding: 30px;
 }
+
+.extra-top-margin {
+    margin-top: 10px;
+}

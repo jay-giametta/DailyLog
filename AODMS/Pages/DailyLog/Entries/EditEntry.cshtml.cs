@@ -13,15 +13,15 @@ namespace AODMS.Pages.DailyLog.Entries
         /* Create a context variable to allow CRUD operations from the page. JG */
         private readonly DailyLogDbContext _db;
 
-        /* Instantiate the local context variable. JG */
+        /* Create a model binding to be used by the OnGet action method. JG */
+        [BindProperty]
+        public DailyLogEntry DailyLogEntry { get; set; }
+
+        /* Instantiate the page model. JG */
         public EditEntryModel(DailyLogDbContext db)
         {
             _db = db;
         }
-
-        /* Create a model binding to be used by the OnGet action method. JG */
-        [BindProperty]
-        public DailyLogEntry DailyLogEntry { get; set; }
 
         /* Instantiate DailyLogEntry with the record info corresponding to the given id parameter. JG */
         public async Task OnGet(int id)

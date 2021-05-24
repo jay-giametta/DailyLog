@@ -6,68 +6,69 @@
 <!--Show top information bar. JG-->
 <div class="container">
 
-    <div class="col-sm-3">
+    <div class="col-sm-2">
         <h4 class="text-info"><u>Date</u></h4>@Model.DailyLogSummary.Date
     </div>
 
-    <div class="col-sm-3">
+    <div class="col-sm-2">
         <h4 class="text-info"><u>Location</u></h4>@Model.DailyLogSummary.Location
     </div>
 
     <div class="col-sm-3">
-        <h4 class="text-info"><u>Certified By</u></h4>
+        <h4 class="text-info"><u>Certified By</u></h4>@Model.DailyLogSummary.CertifiedBy
     </div>
 
     <div class="col-sm-3">
         <h4 class="text-info"><u>Reviewed By</u></h4>
     </div>
 
+    <div class="col-sm-2">
+        <!--Link to create new entries. JG-->
+        <div class="row extra-top-margin">
+            <a class="btn btn-info form-control" asp-page="./AddEntry" asp-route-id="@Model.LogId">Add New Entry</a>
+        </div>
+
+        <!--Link to certify popup. JG-->
+        <div class="row extra-top-margin">
+            <a class="btn btn-success form-control" href="#" data-toggle="modal" data-target="#certifyModal">Certify</a>
+        </div>
+    </div>
 </div>
 
-<!--Link to create new entries. JG-->
-<div class="container">
 
-    <div class="col-sm-8">
-        <h4 class="text-info">Shift Entries</h4>
-    </div>
+<h4 class="text-info">Shift Entries</h4>
+<br />
 
-    <div class="col-sm-4">
-        <a asp-page="./AddEntry" asp-route-id="@Model.LogId" class="btn btn-info form-control">Add New Entry</a>
-    </div>
-
-</div>
 <!--Create a separate framed section for log entries. JG-->
 <div class="table-bordered container extra-pad">
 
     @if (Model.DailyLogEntries.Count() > 0)
     {
-        <div class="container">
 
-            <!--List each log entry. JG-->
-            @foreach (var item in Model.DailyLogEntries)
-            {
-                <div class="row">
+        <!--List each log entry. JG-->
+        @foreach (var item in Model.DailyLogEntries)
+        {
+            <div class="row">
 
-                    <div class="col-sm-1">
-                        @(item.CreateTime.ToString("HHmm") + "L")
-                    </div>
-
-                    <div class="col-sm-2">
-                        @item.CreateUser
-                    </div>
-
-                    <div class="col-sm-6">
-                        @item.Entry
-                    </div>
-
-                    <div class="col-sm-2">
-                        <a asp-page="./EditEntry" asp-route-id="@item.Id" class="btn btn-primary form-control">Edit</a>
-                    </div>
-
+                <div class="col-sm-1">
+                    @(item.CreateTime.ToString("HHmm") + "L")
                 </div>
-                <br />
-            }
-        </div>
+
+                <div class="col-sm-2">
+                    @item.CreateUser
+                </div>
+
+                <div class="col-sm-6">
+                    @item.Entry
+                </div>
+
+                <div class="col-sm-2">
+                    <a class="btn btn-primary form-control" asp-page="./EditEntry" asp-route-id="@item.Id">Edit</a>
+                </div>
+
+            </div>
+            <br />
+        }
     }
     else
     {
@@ -76,6 +77,33 @@
     }
 </div>
 
+<!--Certify popup modal. JG -->
+<div id="certifyModal" class="modal fade" role="dialog">
 
+    <div class="modal-dialog">
 
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Certify Daily Log?</h4>
+            </div>
+
+            <div class="modal-body">
+                <p>
+                    I CERTIFY that entries are correct; that all scheduled operations have been accomplished, except as noted, that all abnormal occurrences or conditions and all
+                    significant incidents/events have been recorded.
+                </p>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-danger" data-dismiss="modal">No</button>
+                <!--TODO: Update the certifier to the current user in production-->
+                <a class="button btn btn-success" asp-page="./VerifyEntry" asp-route-id="@Model.LogId" asp-route-certifier="Jay Giametta">Yes</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 

@@ -14,18 +14,18 @@ namespace AODMS.Pages
         /* Create a context variable to allow CRUD operations from the page. JG */
         private readonly DailyLogDbContext _db;
 
-        /* Instantiate the local context variable. JG */
-        public CreateModel(DailyLogDbContext db)
-        {
-            _db = db;
-        }
-
         /* Create a model binding to be used by the OnPost action method. JG */
         [BindProperty]
         public DailyLogSummary DailyLogSummary { get; set; }
 
         /* Store Location records from the database and allow iterations over them. JG */
         public IEnumerable<DailyLogLocation> DailyLogLocations { get; set; }
+
+        /* Instantiate the page model. JG */
+        public CreateModel(DailyLogDbContext db)
+        {
+            _db = db;
+        }
 
         /* Do this when the page gets loaded. JG */
         public async Task OnGet()                                       

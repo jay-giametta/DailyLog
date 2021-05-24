@@ -25,11 +25,11 @@
             </div>
 
             <div class="col-sm-9">
-                <input asp-for="DailyLogEntry.Entry" class="form-control" />
+                <input class="form-control" asp-for="DailyLogEntry.Entry" />
             </div>
 
             <!--Alert on invalid field state. JG-->
-            <span asp-validation-for="DailyLogEntry.Entry" class="text-danger"></span>
+            <span class="text-danger" asp-validation-for="DailyLogEntry.Entry"></span>
 
         </div>
 
@@ -37,11 +37,11 @@
         <div class="form-group row">
 
             <div class="col-sm-2 col-sm-offset-2">
-                <input type="submit" value="Save" class="btn btn-primary form-control" />
+                <input class="btn btn-primary form-control" type="submit" value="Save" />
             </div>
 
             <div class="col-sm-2">
-                <a asp-page="./Index" asp-route-id="@Model.DailyLogEntry.LogSummaryId" class="btn btn-info form-control">Back to Log Entries</a>
+                <a class="btn btn-info form-control" asp-page="./Index" asp-route-id="@Model.DailyLogEntry.LogSummaryId" >Back to Log Entries</a>
             </div>
 
         </div>

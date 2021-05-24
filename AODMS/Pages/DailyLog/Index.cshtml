@@ -12,7 +12,7 @@
     </div>
 
     <div class="col-sm-4">
-        <a asp-page="./Create" class="btn btn-info form-control">Create New Daily Log</a>
+        <a class="btn btn-info form-control" asp-page="./Create">Create New Daily Log</a>
     </div>
 
 </div>
@@ -52,7 +52,7 @@
                             </td>
 
                             <td>
-                                <a asp-page="./Entries/Index" asp-route-id="@item.Id" class="btn btn-primary">Open</a>
+                                <a class="btn btn-primary" asp-page="./Entries/Index" asp-route-id="@item.Id">Open</a>
                             </td>
 
                         </tr>

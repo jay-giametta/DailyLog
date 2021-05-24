@@ -14,12 +14,6 @@ namespace AODMS.Pages.DailyLog.Entries
         /* Create a context to allow CRUD database operations from the page. JG */
         private DailyLogDbContext _db;
 
-        /* Instantiate the local database context. JG */
-        public IndexModel(DailyLogDbContext db)
-        {
-            _db = db;
-        }
-
         /* Store DailyLog records from the database and allow iterations over them. JG */
         public IEnumerable<DailyLogEntry> DailyLogEntries { get; set; }
 
@@ -28,6 +22,12 @@ namespace AODMS.Pages.DailyLog.Entries
 
         /* Store the id parameter to link log entries to the correct log. JG */
         public int LogId { get; set; }
+
+        /* Instantiate the page model. JG */
+        public IndexModel(DailyLogDbContext db)
+        {
+            _db = db;
+        }
 
         public async Task OnGet(int id)
         {
