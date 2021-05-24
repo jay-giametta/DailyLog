@@ -4,30 +4,40 @@
     ViewData["Title"] = "Daily Logs";
 }
 
-<div class="container row vertical-align">
+<!--Link to create new logs. JG-->
+<div class="container">
 
-    <!--Link to create new logs. JG-->
     <div class="col-sm-8">
         <h4 class="text-info">Logs</h4>
     </div>
-    <div class="col-sm-4 daily-log-button">
+
+    <div class="col-sm-4">
         <a asp-page="./Create" class="btn btn-info form-control text-white">Create New Daily Log</a>
     </div>
 
-    <!--Read existing logs. JG-->
-    <div class="col-sm-8 daily-log-grid">
+</div>
+
+<!--Read existing logs. JG-->
+<div class="container">
+
+    <div class="col-sm-8">
+
         <form method="post">
+
             @if (Model.DailyLogSummaries.Count() > 0)
             {
-                <table class="table table-responsive">
+                <table class="table">
+
                     <tr>
                         <!--Get table headers. JG-->
                         <th>
                             <label asp-for="DailyLogSummaries.FirstOrDefault().Date"></label>
                         </th>
+
                         <th>
                             <label asp-for="DailyLogSummaries.FirstOrDefault().Location"></label>
                         </th>
+
                     </tr>
                     <!--List each daily log record. JG-->
                     @foreach (var item in Model.DailyLogSummaries)
@@ -36,12 +46,15 @@
                             <td>
                                 @item.Date
                             </td>
+
                             <td>
                                 @item.Location
                             </td>
+
                             <td>
                                 <a asp-page="./Entries/Index" asp-route-id="@item.Id" class="btn btn-primary">Open</a>
                             </td>
+
                         </tr>
                     }
                 </table>
@@ -53,5 +66,5 @@
             }
         </form>
     </div>
-</div>
 
+</div>

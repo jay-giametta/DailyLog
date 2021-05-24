@@ -5,17 +5,22 @@
 }
 
 <h4 class="text-info">Create New Daily Log</h4>
+
 <br />
-<div class="table-bordered container" style="padding:30px;">
+
+<div class="container table-bordered">
+
     <form method="post">
         <!--Give a summary of invalid model states. JG-->
         <div class="text-danger" asp-validation-summary="ModelOnly"></div>
 
         <!--Create a dropdown with locations from the database. JG-->
         <div class="form-group row">
+
             <div class="col-sm-2">
                 <label asp-for="DailyLogSummary.Location"></label>
             </div>
+
             <div class="col-sm-4">
                 <select asp-for="DailyLogSummary.Location" class="form-control">
                     @foreach (var item in Model.DailyLogLocations)
@@ -28,33 +33,44 @@
                 <!--Create a field description. JG-->
                 <small class="form-text text-muted">Choose your unit.</small>
             </div>
+
             <!--Alert on invalid field state. JG-->
             <span asp-validation-for="DailyLogSummary.Location" class="text-danger"></span>
+
         </div>
         <!--Get the date of the log file. JG-->
         <div class="form-group row">
+
             <div class="col-sm-2">
                 <label asp-for="DailyLogSummary.Date"></label>
             </div>
+
             <div class="col-sm-4">
                 <!--Only take dates in YYYY-MM-DD format. JG-->
                 <input asp-for="DailyLogSummary.Date" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
                 <!--Create a field description. JG-->
                 <small class="form-text text-muted">Enter date in YYYY-MM-DD format.</small>
             </div>
+
             <!--Alert on invalid field state. JG-->
             <span asp-validation-for="DailyLogSummary.Date" class="text-danger"></span>
         </div>
         <!--Create the log file or go back to the last page. JG-->
         <div class="form-group row">
+
             <div class="col-sm-2 col-sm-offset-2">
+
                 <input type="submit" value="Create" class="btn btn-primary form-control" />
             </div>
+
             <div class="col-sm-2">
                 <a asp-page="/DailyLog/Index" class="btn btn-info form-control">Back to List</a>
             </div>
+
         </div>
+
     </form>
+
 </div>
 
 @section Scripts{

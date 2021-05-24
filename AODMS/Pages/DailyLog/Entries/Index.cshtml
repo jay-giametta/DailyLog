@@ -3,46 +3,67 @@
 @{
     ViewData["Title"] = "Shift Entries";
 }
-
 <!--Show top information bar. JG-->
-<div class="row">
+<div class="container">
+
     <div class="col-sm-3">
         <h4 class="text-info"><u>Date</u></h4>@Model.DailyLogSummary.Date
     </div>
+
     <div class="col-sm-3">
         <h4 class="text-info"><u>Location</u></h4>@Model.DailyLogSummary.Location
     </div>
+
     <div class="col-sm-3">
         <h4 class="text-info"><u>Certified By</u></h4>
     </div>
+
     <div class="col-sm-3">
         <h4 class="text-info"><u>Reviewed By</u></h4>
     </div>
+
 </div>
-<br />
+
+<!--Link to create new entries. JG-->
+<div class="container">
+
+    <div class="col-sm-8">
+        <h4 class="text-info">Shift Entries</h4>
+    </div>
+
+    <div class="col-sm-4 daily-log-button">
+        <a asp-page="./AddEntry" asp-route-id="@Model.LogId" class="btn btn-info form-control text-white">Add New Entry</a>
+    </div>
+
+</div>
 <!--Create a separate framed section for log entries. JG-->
-<h4 class="text-info">Shift Entries</h4>
-<br />
-<div class="table-bordered container" style="padding:30px;">
+<div class="table-bordered container">
+
     @if (Model.DailyLogEntries.Count() > 0)
     {
-        <div class="container-fluid">
+        <div class="container">
+
             <!--List each log entry. JG-->
             @foreach (var item in Model.DailyLogEntries)
             {
                 <div class="row">
+
                     <div class="col-sm-2">
                         @item.CreateTime
                     </div>
+
                     <div class="col-sm-2">
                         @item.CreateUser
                     </div>
+
                     <div class="col-sm-7">
                         @item.Entry
                     </div>
+
                     <div class="col-sm-1">
-                        <input type="submit" value="Edit" class="btn btn-info form-control" />
+                        <input type="submit" value="Edit" class="btn btn-primary form-control" />
                     </div>
+
                 </div>
                 <br />
             }
@@ -54,6 +75,7 @@
         <p>No entires available.</p>
     }
 </div>
+
 
 
 
