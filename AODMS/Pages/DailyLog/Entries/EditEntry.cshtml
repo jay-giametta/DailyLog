@@ -1,0 +1,58 @@
+﻿@page
+@model AODMS.Pages.DailyLog.Entries.EditEntryModel
+@{
+    ViewData["Title"] = "EditEntry";
+}
+
+<h4 class="text-info">Edit Log Entry</h4>
+<br />
+
+<div class="table-bordered container extra-pad">
+
+    <form method="post">
+        <!--Give a summary of invalid model states. JG-->
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+        <!--Insert hidden field information-->
+        <input type="hidden" asp-for="DailyLogEntry.Id" />
+        <input type="hidden" asp-for="DailyLogEntry.LogSummaryId" />
+        <input type="hidden" asp-for="DailyLogEntry.CreateUser" />
+
+        <div class="form-group row">
+            <!--Set the log entry text. JG-->
+            <div class="col-sm-1">
+                <label asp-for="DailyLogEntry.Entry">Entry:</label>
+            </div>
+
+            <div class="col-sm-9">
+                <input asp-for="DailyLogEntry.Entry" class="form-control" />
+            </div>
+
+            <!--Alert on invalid field state. JG-->
+            <span asp-validation-for="DailyLogEntry.Entry" class="text-danger"></span>
+
+        </div>
+
+        <!--Add the log entry or go back to the last page. JG-->
+        <div class="form-group row">
+
+            <div class="col-sm-2 col-sm-offset-2">
+                <input type="submit" value="Save" class="btn btn-primary form-control" />
+            </div>
+
+            <div class="col-sm-2">
+                <a asp-page="./Index" asp-route-id="@Model.DailyLogEntry.LogSummaryId" class="btn btn-info form-control">Back to Log Entries</a>
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
+
+@section Scripts{
+    <!--Perform client-side validation prior to post. JG-->
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
