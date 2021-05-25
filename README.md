@@ -1,2 +1,2 @@
-# AODMS
+# Daily Log
 
