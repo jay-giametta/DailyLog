@@ -4,14 +4,16 @@ using AODMS.Models.DailyLog;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AODMS.Migrations
 {
     [DbContext(typeof(DailyLogDbContext))]
-    partial class DailyLogDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210525152004_DailyLogSummaryDate")]
+    partial class DailyLogSummaryDate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

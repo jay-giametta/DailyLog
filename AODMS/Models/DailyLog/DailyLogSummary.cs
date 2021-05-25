@@ -18,7 +18,7 @@ namespace AODMS.Models.DailyLog
 
         /* Log creation date. JG */
         [Required]
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
 
         public string CertifiedBy { get; set; }
 
