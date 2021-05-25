@@ -35,7 +35,7 @@ namespace AODMS.Pages.DailyLog.Entries
         public async Task<IActionResult> OnPost()
         {
             /* Fill in hidden values for the log entry. JG */
-            DailyLogEntry.CreateTime = DateTime.Now;
+            DailyLogEntry.CreateTime = DateTime.Now.ToUniversalTime();
 
             await _db.DailyLogEntries.AddAsync(DailyLogEntry);                                      //Prep the log entry to save to the database
 

@@ -4,15 +4,16 @@
     ViewData["Title"] = "Daily Logs";
 }
 
-<!--Link to create new logs. JG-->
+
 <div class="container">
 
-    <div class="col-sm-6">
+    <div class="col-sm-1">
         <h4 class="text-info">Logs</h4>
     </div>
 
     <div class="col-sm-2">
 
+        <!--Create a dropdown to filter results by location-->
         <select class="form-control" onchange="window.location.href=this.value">
 
             <option value="./DailyLog">All</option>
@@ -34,7 +35,8 @@
         <small class="form-text text-muted">Choose your unit.</small>
     </div>
 
-    <div class="col-sm-4">
+    <!--Link to create new logs. JG-->
+    <div class="col-sm-3">
         <a class="btn btn-info form-control" asp-page="./Create">Create New Daily Log</a>
     </div>
 
@@ -49,38 +51,40 @@
 
             @if (Model.DailyLogSummaries.Count() > 0)
             {
-                <table class="table">
 
-                    <tr>
-                        <!--Get table headers. JG-->
-                        <th>
-                            <label asp-for="DailyLogSummaries.FirstOrDefault().Date"></label>
-                        </th>
+                <div class="container align-vertical extra-top-margin">
 
-                        <th>
-                            <label asp-for="DailyLogSummaries.FirstOrDefault().Unit"></label>
-                        </th>
+                    <div class="row">
+                        <!--Get headers. JG-->
+                        <div class="col-sm-2">
+                            <h5 class="text-info">Date</h5>
+                        </div>
 
-                    </tr>
+                        <div class="col-sm-2">
+                            <h5 class="text-info">Unit</h5>
+                        </div>
+
+                    </div>
+
                     <!--List each daily log record. JG-->
                     @foreach (var item in Model.DailyLogSummaries)
                     {
-                        <tr>
-                            <td>
+                        <div class="row extra-top-margin">
+                            <div class="col-sm-2">
                                 @item.Date.ToString("yyyy-MM-dd")
-                            </td>
+                            </div>
 
-                            <td>
+                            <div class="col-sm-2">
                                 @item.Unit
-                            </td>
+                            </div>
 
-                            <td>
+                            <div class="col-sm-1">
                                 <a class="btn btn-primary" asp-page="./Entries/Index" asp-route-id="@item.Id">Open</a>
-                            </td>
+                            </div>
 
-                        </tr>
+                        </div>
                     }
-                </table>
+                </div>
             }
             else
             {
