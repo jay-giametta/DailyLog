@@ -25,12 +25,23 @@
     <div class="col-sm-2">
         <!--Link to create new entries. JG-->
         <div class="row extra-top-margin">
-            <a class="btn btn-info form-control" asp-page="./AddEntry" asp-route-id="@Model.LogId">Add New Entry</a>
+            @if (Model.DailyLogSummary.CertifiedBy == null)
+            {
+                <a class="btn btn-info form-control" asp-page="./AddEntry" asp-route-id="@Model.LogId">Add New Entry</a>
+            }
         </div>
+
 
         <!--Link to certify popup. JG-->
         <div class="row extra-top-margin">
-            <a class="btn btn-success form-control" href="#" data-toggle="modal" data-target="#certifyModal">Certify</a>
+            @if (Model.DailyLogSummary.CertifiedBy == null)
+            {
+                <a class="btn btn-success form-control" href="#" data-toggle="modal" data-target="#certifyModal">Certify</a>
+            }
+            else
+            {
+                <a class="btn btn-success form-control" href="#" data-toggle="modal" data-target="#decertifyModal">Decertify</a>
+            }
         </div>
     </div>
 </div>
@@ -62,9 +73,12 @@
                     @item.Entry
                 </div>
 
-                <div class="col-sm-2">
-                    <a class="btn btn-primary form-control" asp-page="./EditEntry" asp-route-id="@item.Id">Edit</a>
-                </div>
+                @if (Model.DailyLogSummary.CertifiedBy == null)
+                {
+                    <div class="col-sm-2">
+                        <a class="btn btn-primary form-control" asp-page="./EditEntry" asp-route-id="@item.Id">Edit</a>
+                    </div>
+                }
 
             </div>
             <br />
@@ -98,7 +112,35 @@
             <div class="modal-footer">
                 <button class="btn btn-danger" data-dismiss="modal">No</button>
                 <!--TODO: Update the certifier to the current user in production-->
-                <a class="button btn btn-success" asp-page="./VerifyEntry" asp-route-id="@Model.LogId" asp-route-certifier="Jay Giametta">Yes</a>
+                <a class="button btn btn-success" asp-page="./CertifyEntry" asp-route-id="@Model.LogId" asp-route-certifier="Jay Giametta">Yes</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!--Decertify popup modal. JG -->
+<div id="decertifyModal" class="modal fade" role="dialog">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Certify Daily Log?</h4>
+            </div>
+
+            <div class="modal-body">
+                <p>
+                    Are you sure you want to decertify this log and unlock it for further edits?
+                </p>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-danger" data-dismiss="modal">No</button>
+                <a class="button btn btn-success" asp-page="./DecertifyEntry" asp-route-id="@Model.LogId">Yes</a>
             </div>
 
         </div>
