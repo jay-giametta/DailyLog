@@ -30,7 +30,7 @@ namespace AODMS.Pages
         /* Do this when the page gets loaded. JG */
         public async Task OnGet()                                       
         {
-            DailyLogLocations = await _db.DailyLogLocations.ToListAsync();      //Load the records from the Location table in the databse
+            DailyLogLocations = await _db.DailyLogLocations.ToListAsync();      //Load the records from the Location table in the database
         }
 
          /* Do this when the form is submitted. JG */
@@ -40,7 +40,7 @@ namespace AODMS.Pages
             int id;
             try
             {
-                id = _db.DailyLogSummaries.Where(record => record.Location == DailyLogSummary.Location && record.Date == DailyLogSummary.Date).FirstOrDefault().Id;
+                id = _db.DailyLogSummaries.Where(record => record.Unit == DailyLogSummary.Unit && record.Date == DailyLogSummary.Date).FirstOrDefault().Id;
             }
             catch (NullReferenceException)
             {

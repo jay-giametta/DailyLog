@@ -60,7 +60,7 @@ namespace AODMS.Migrations
 
                     b.Property<DateTime>("Date");
 
-                    b.Property<string>("Location")
+                    b.Property<string>("Unit")
                         .IsRequired();
 
                     b.Property<string>("ValidatedBy");

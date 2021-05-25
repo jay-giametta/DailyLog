@@ -16,11 +16,11 @@
         <div class="form-group row">
 
             <div class="col-sm-2">
-                <label asp-for="DailyLogSummary.Location"></label>
+                <label asp-for="DailyLogSummary.Unit"></label>
             </div>
 
             <div class="col-sm-4">
-                <select class="form-control" asp-for="DailyLogSummary.Location">
+                <select class="form-control" asp-for="DailyLogSummary.Unit">
                     @foreach (var item in Model.DailyLogLocations)
                     {
                         <option>

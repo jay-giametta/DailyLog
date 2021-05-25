@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AODMS.Migrations
 {
-    public partial class DailyLog : Migration
+    public partial class DbBuild : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -41,8 +41,10 @@ namespace AODMS.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Location = table.Column<string>(nullable: false),
-                    Date = table.Column<string>(nullable: false)
+                    Unit = table.Column<string>(nullable: false),
+                    Date = table.Column<DateTime>(nullable: false),
+                    CertifiedBy = table.Column<string>(nullable: true),
+                    ValidatedBy = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

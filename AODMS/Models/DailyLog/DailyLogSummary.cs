@@ -14,7 +14,7 @@ namespace AODMS.Models.DailyLog
 
         /* Equivalent to unit/PAS. Can have more than one location per base. JG */
         [Required]
-        public string Location { get; set; }
+        public string Unit { get; set; }
 
         /* Log creation date. JG */
         [Required]

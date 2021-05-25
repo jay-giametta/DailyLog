@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AODMS.Migrations
 {
     [DbContext(typeof(DailyLogDbContext))]
-    [Migration("20210525152004_DailyLogSummaryDate")]
-    partial class DailyLogSummaryDate
+    [Migration("20210525162440_DbBuild")]
+    partial class DbBuild
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -62,7 +62,7 @@ namespace AODMS.Migrations
 
                     b.Property<DateTime>("Date");
 
-                    b.Property<string>("Location")
+                    b.Property<string>("Unit")
                         .IsRequired();
 
                     b.Property<string>("ValidatedBy");

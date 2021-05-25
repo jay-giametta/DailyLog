@@ -7,8 +7,31 @@
 <!--Link to create new logs. JG-->
 <div class="container">
 
-    <div class="col-sm-8">
+    <div class="col-sm-6">
         <h4 class="text-info">Logs</h4>
+    </div>
+
+    <div class="col-sm-2">
+
+        <select class="form-control" onchange="window.location.href=this.value">
+
+            <option value="./DailyLog">All</option>
+
+            @foreach (var item in Model.DailyLogLocations)
+            {
+                @if (@Model.myUnit == item.Unit)
+                {
+                    <option value="./DailyLog?unit=@item.Unit" selected>@item.Unit</option>
+                }
+                else
+                {
+                    <option value="./DailyLog?unit=@item.Unit">@item.Unit</option>
+                }
+            }
+        </select>
+
+        <!--Create a field description. JG-->
+        <small class="form-text text-muted">Choose your unit.</small>
     </div>
 
     <div class="col-sm-4">
@@ -35,7 +58,7 @@
                         </th>
 
                         <th>
-                            <label asp-for="DailyLogSummaries.FirstOrDefault().Location"></label>
+                            <label asp-for="DailyLogSummaries.FirstOrDefault().Unit"></label>
                         </th>
 
                     </tr>
@@ -48,7 +71,7 @@
                             </td>
 
                             <td>
-                                @item.Location
+                                @item.Unit
                             </td>
 
                             <td>
