@@ -21,5 +21,7 @@ namespace AODMS.Models.DailyLog
         public string Date { get; set; }
 
         public string CertifiedBy { get; set; }
+
+        public string ValidatedBy { get; set; }
     }
 }

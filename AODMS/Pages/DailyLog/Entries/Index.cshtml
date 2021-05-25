@@ -6,52 +6,75 @@
 <!--Show top information bar. JG-->
 <div class="container">
 
-    <div class="col-sm-2">
-        <h4 class="text-info"><u>Date</u></h4>@Model.DailyLogSummary.Date
+    <div class="row">
+        <h4 class="text-info">Shift Entries</h4>
     </div>
 
-    <div class="col-sm-2">
-        <h4 class="text-info"><u>Location</u></h4>@Model.DailyLogSummary.Location
-    </div>
-
-    <div class="col-sm-3">
-        <h4 class="text-info"><u>Certified By</u></h4>@Model.DailyLogSummary.CertifiedBy
-    </div>
-
-    <div class="col-sm-3">
-        <h4 class="text-info"><u>Reviewed By</u></h4>
-    </div>
-
-    <div class="col-sm-2">
-        <!--Link to create new entries. JG-->
-        <div class="row extra-top-margin">
-            @if (Model.DailyLogSummary.CertifiedBy == null)
-            {
-                <a class="btn btn-info form-control" asp-page="./AddEntry" asp-route-id="@Model.LogId">Add New Entry</a>
-            }
+    <div class="row">
+        <div class="col-sm-2">
+            <h5 class="text-info">Date</h5>@Model.DailyLogSummary.Date
         </div>
 
-
-        <!--Link to certify popup. JG-->
-        <div class="row extra-top-margin">
-            @if (Model.DailyLogSummary.CertifiedBy == null)
-            {
-                <a class="btn btn-success form-control" href="#" data-toggle="modal" data-target="#certifyModal">Certify</a>
-            }
-            else
-            {
-                <a class="btn btn-success form-control" href="#" data-toggle="modal" data-target="#decertifyModal">Decertify</a>
-            }
+        <div class="col-sm-2">
+            <h5 class="text-info">Location</h5>@Model.DailyLogSummary.Location
         </div>
+
+        <div class="col-sm-3">
+            <h5 class="text-info">Certified By</h5>@Model.DailyLogSummary.CertifiedBy
+        </div>
+
+        <div class="col-sm-3">
+            <h5 class="text-info">Validated By</h5>@Model.DailyLogSummary.ValidatedBy
+        </div>
+
+        @if (Model.DailyLogSummary.CertifiedBy == null)
+        {
+            <div class="col-sm-2">
+                <!--Link to create new entries. JG-->
+                <div class="row extra-top-margin">
+                    <a class="btn btn-info form-control" asp-page="./AddEntry" asp-route-id="@Model.LogId">Add New Entry</a>
+                </div>
+
+
+                <!--Link to certify popup. JG-->
+                <div class="row extra-top-margin">
+                    <a class="btn btn-success form-control" href="#" data-toggle="modal" data-target="#certifyModal">Certify</a>
+                </div>
+
+            </div>
+        }
+        else
+        {
+            <div class="col-sm-2">
+                <!--Link to decertify popup. JG-->
+                <div class="row extra-top-margin">
+                    <a class="btn btn-danger form-control" href="#" data-toggle="modal" data-target="#decertifyModal">Decertify</a>
+                </div>
+
+                @if (Model.DailyLogSummary.ValidatedBy == null)
+                {
+                    <!--Link to validate popup. JG-->
+                    <div class="row extra-top-margin">
+                        <a class="btn btn-success form-control" href="#" data-toggle="modal" data-target="#validateModal">Validate</a>
+                    </div>
+                }
+                else
+                {
+                    <!--Link to invalidate popup. JG-->
+                    <div class="row extra-top-margin">
+                        <a class="btn btn-danger form-control" href="#" data-toggle="modal" data-target="#invalidateModal">Invalidate</a>
+                    </div>
+                }
+
+            </div>
+
+
+        }
     </div>
 </div>
 
-
-<h4 class="text-info">Shift Entries</h4>
-<br />
-
 <!--Create a separate framed section for log entries. JG-->
-<div class="table-bordered container extra-pad">
+<div class="table-bordered container extra-pad extra-top-margin align-vertical">
 
     @if (Model.DailyLogEntries.Count() > 0)
     {
@@ -75,7 +98,7 @@
 
                 @if (Model.DailyLogSummary.CertifiedBy == null)
                 {
-                    <div class="col-sm-2">
+                    <div class="col-sm-2 extra-bottom-margin">
                         <a class="btn btn-primary form-control" asp-page="./EditEntry" asp-route-id="@item.Id">Edit</a>
                     </div>
                 }
@@ -129,7 +152,7 @@
         <div class="modal-content">
 
             <div class="modal-header">
-                <h4 class="modal-title">Certify Daily Log?</h4>
+                <h4 class="modal-title">Decertify Daily Log?</h4>
             </div>
 
             <div class="modal-body">
@@ -149,3 +172,61 @@
 
 </div>
 
+<!--Validate popup modal. JG -->
+<div id="validateModal" class="modal fade" role="dialog">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Validate Daily Log?</h4>
+            </div>
+
+            <div class="modal-body">
+                <p>
+                    I have validated that entries were correct; that all scheduled operations were accomplished, except as noted, and that all abnormal occurrences or conditions and all
+                    significant incidents/events were recorded.
+                </p>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-danger" data-dismiss="modal">No</button>
+                <!--TODO: Update the validator to the current user in production-->
+                <a class="button btn btn-success" asp-page="./ValidateEntry" asp-route-id="@Model.LogId" asp-route-validator="Jay Giametta">Yes</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!--Invalidate popup modal. JG -->
+<div id="invalidateModal" class="modal fade" role="dialog">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Certify Daily Log?</h4>
+            </div>
+
+            <div class="modal-body">
+                <p>
+                    Are you sure you want to invalidate this log?
+                </p>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-danger" data-dismiss="modal">No</button>
+                <!--TODO: Update the validator to the current user in production-->
+                <a class="button btn btn-success" asp-page="./InValidateEntry" asp-route-id="@Model.LogId">Yes</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

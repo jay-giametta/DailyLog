@@ -3,10 +3,18 @@ body {
 }
 
 /*DailyLog CSS. JG*/
+.align-vertical {
+    vertical-align: middle;
+}
+
 .extra-pad {
-    padding: 30px;
+    padding-top: 30px;
 }
 
 .extra-top-margin {
     margin-top: 10px;
+}
+
+.extra-bottom-margin {
+    margin-bottom: 10px;
 }

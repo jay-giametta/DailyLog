@@ -14,7 +14,7 @@ namespace AODMS.Pages
         /* Create a context variable to allow CRUD operations from the page. JG */
         private readonly DailyLogDbContext _db;
 
-        /* Create a model binding to be used by the OnPost action method. JG */
+        /* Create a model binding for a log summary property to be used by the OnPost action method. JG */
         [BindProperty]
         public DailyLogSummary DailyLogSummary { get; set; }
 
